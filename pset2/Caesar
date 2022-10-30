@@ -1,0 +1,68 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int main(int argc, string argv[])
+
+{
+   //the key has to contain exactly two strings
+    if (argc != 2)
+    {
+        printf("Usage: ./Caesar key\n");
+        return 1;
+    }
+
+    //the key has to be an integer
+    string key = argv[1];
+    for (int i = 0; i < strlen(argv[1]); i++)
+    {
+        if (!isdigit(argv[1][i]))
+        {
+            printf("Usage: ./Caesar key\n");
+            return 1;
+        }
+    }
+
+    //convert key to integer
+    int k = atoi(key);
+
+    //prompt user for plaintext
+    string s = get_string("plaintext: ");
+    printf("ciphertext: ");
+
+    //the algorithm body
+    int n = strlen(s);
+    for (int i = 0; i < n; i++)
+    {
+        int x = k % 26;
+        if (islower(s[i]))
+        {
+            if (s[i] + x <= 122)
+                {
+                    printf("%c", s[i] + x);
+                }
+                else printf("%c", s[i] + x - 26);
+        }
+
+        else
+        {
+           int y = k % 26;
+            if (isupper(s[i]))
+            {
+                if (s[i] + y <= 90)
+                {
+                    printf("%c", s[i] + y);
+                }
+                else printf("%c", s[i] + y - 26);
+            }
+
+        else
+            {
+                printf("%c", s[i]);
+            }
+        }
+    }
+     printf("\n");
+}
