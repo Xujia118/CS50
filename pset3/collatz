@@ -1,0 +1,30 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int collatz(int n);
+
+int main(void)
+{
+    int n = get_int("Enter an integer: ");
+    printf("\nIt will take %i steps.\n", collatz(n));
+}
+
+int collatz(int n)
+{
+    if (n == 1)
+        return 0;
+    
+    //if even, repeat on n/2
+    else if ((n % 2) == 0)
+        {
+            printf("%i ", n/2);
+            return 1 + collatz(n/2);             
+        }
+ 
+    //if odd, repeat on 3n+1
+    else 
+        {
+            printf("%i ", (n*3 +1));
+            return 1 + collatz(n*3 + 1);      
+        }
+}
