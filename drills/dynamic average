@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <stdlib.h>
+#include <cs50.h>
+
+int main(int argc, string argv[])
+{
+    if (argc != 2)
+    {
+        printf("Usage: ./average + number\n");
+        return 1;
+    }    
+    
+    for (int i = 0; i < strlen(argv[1]); i++)
+    {
+        if (!isdigit(argv[1][i]))
+        {
+            printf("The number has to be an integer.\n");
+            return 2;
+        }
+    }
+    
+    //convert the command-line number x into integer
+    int x = atoi(argv[1]);
+    
+    float score[x]; 
+    for (int i = 0; i < x; i++)
+    {
+        printf("Enter a number: ");
+        scanf("%f", &score[i]);
+    }
+
+    //calculate total
+    float total = 0;
+    float average;
+
+    for (int i = 0; i < x; i++)
+    {
+        total += score[i];
+    }
+    
+    //calculate average
+    average = total / x;
+    
+    printf("Average is %f\n", average); 
+}
+
