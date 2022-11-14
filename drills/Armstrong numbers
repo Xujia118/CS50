@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <math.h>
+
+int armstrong(int);
+
+int main()
+{
+    //prompt the user for the number of digits
+    int digit;
+    do
+    {
+        printf("Enter the number of digits: ");
+        scanf("%d", &digit);
+    }
+    while (digit < 3 || digit > 7);
+
+    //call function
+    int number;
+    for (number = pow(10, digit - 1) ; number < pow(10, digit); number++)
+    {
+        if (number == armstrong(number))
+        {
+            printf("%d ", number);
+        }
+    }
+    printf("\n");
+    return 0;
+}
+
+int armstrong(int n)
+{
+    int digit = 0;
+    int temp;
+
+    //have to set a temp, or n will change.
+    temp = n;
+    while (temp != 0)
+    {
+        temp = temp / 10;
+        digit++;
+    }
+    
+    int sum = 0;
+    int remain;
+    while (n != 0)
+    {
+        remain = n % 10;
+        sum = sum + pow(remain, digit);
+        n = n / 10;
+    }
+
+    return sum;
+}
+
