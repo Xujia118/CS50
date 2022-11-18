@@ -1,0 +1,30 @@
+from cs50 import get_float
+
+def main():
+
+# prompt user for a non-negative value
+    while True:
+        change = get_float("Changed owed: ")
+        if change > 0:
+            break
+
+    change = change * 100
+
+# we first count the number of 25c
+    count25 = int(change / 25)
+    change = change - count25 * 25
+
+# then we count the number of 10c
+    count10 = int(change / 10 )
+    change = change - count10 * 10
+
+# then we count the number of 5c
+    count5 = int(change / 5)
+    change = change - count5 * 5
+
+# finally we count the number of pennies
+    count1 = int(change / 1)
+
+    print(count25 + count10 + count5 + count1)
+
+main()
